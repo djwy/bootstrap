@@ -19,7 +19,8 @@ music-manager \
 google-drive \
 flux \
 typed \
-tunnelblick
+tunnelblick \
+evernote
 
 # gaming
 brew cask install \
@@ -73,3 +74,9 @@ node \
 python3 \
 postgresql \
 sqlite
+
+npm install -g \
+jshint \
+stylus \
+bower \
+ember-cli

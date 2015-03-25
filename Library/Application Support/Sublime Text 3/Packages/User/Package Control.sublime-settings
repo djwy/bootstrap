@@ -1,0 +1,42 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Alignment",
+		"Better CoffeeScript",
+		"Dayle Rees Color Schemes",
+		"Dockerfile Syntax Highlighting",
+		"Ember.js Snippets",
+		"EmberScript",
+		"Emblem.js Syntax Highlighting",
+		"Emmet",
+		"Emmet Css Snippets",
+		"ERB Snippets",
+		"GitSavvy",
+		"GoSublime",
+		"HTML5",
+		"HTMLAttributes",
+		"INI",
+		"JSHint",
+		"LESS",
+		"LESS-build",
+		"nginx",
+		"Package Control",
+		"Placeholders",
+		"Pretty JSON",
+		"Sass",
+		"SASS Build",
+		"Stylus",
+		"Theme - Spacegray",
+		"themes",
+		"WordPress",
+		"WordPress Generate Salts"
+	],
+	"repositories":
+	[
+		"https://github.com/berfarah/themes"
+	]
+}

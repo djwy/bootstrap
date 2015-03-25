@@ -1,0 +1,20 @@
+{
+	"auto_complete_selector":
+	[
+		"text.html.erb, source - comment, meta.tag - punctuation.definition.tag.begin"
+	],
+	"bold_folder_labels": true,
+	"caret_style": "wide",
+	"color_scheme": "Packages/Dayle Rees Color Schemes/legacy/TronLegacy.tmTheme",
+	"font_face": "Source Code Pro",
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"open_files_in_new_window": false,
+	"theme": "legacy.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"wide_caret": true
+}
