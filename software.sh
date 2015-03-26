@@ -1,6 +1,7 @@
 #!/bin/bash
 
-brew tap caskroom/homebrew-cask
+brew install caskroom/cask/brew-cask
+brew tap cask/versions
 
 # essentials
 echo "Installing essentials"
