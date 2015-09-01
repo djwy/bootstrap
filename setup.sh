@@ -10,6 +10,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # Move over preferences
 echo "Moving over old preferences"
+chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
 mkdir -p ~/.oh-my-zsh/custom/themes
 mv dotfiles/bernardo.zsh-theme ~/.oh-my-zsh/custom/themes
