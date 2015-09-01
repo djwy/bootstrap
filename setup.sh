@@ -29,5 +29,7 @@ cp -R sublime/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 echo "Moving icons to desktop"
 mv -R icons ~/Desktop
 
+echo "Check for your sync settings in Dashlane to get Atom 100% back to before"
+
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

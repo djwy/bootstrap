@@ -40,6 +40,10 @@ module Exec
   def npm(*args)
     cmd(*%w(npm install -g), *args)
   end
+
+  def apm(*args)
+    cmd(*%w(apm install), *args)
+  end
 end
 
 module AppGroup

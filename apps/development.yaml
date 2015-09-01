@@ -51,3 +51,5 @@
 - ember-cli
 - grunt
 - mermaid
+:apm:
+- sync-settings
