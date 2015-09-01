@@ -1,0 +1,7 @@
+# Core
+:bash:
+- curl -L https://raw.github.com/robbyrussell
+- brew install caskroom/cask/brew-cask
+- brew tap cask/versions
+:brew:
+- docker
