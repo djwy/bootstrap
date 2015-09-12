@@ -20,8 +20,7 @@ cp -R dotfiles/ ~/
 ./osx.sh
 
 echo "Which apps do you want to install?\n[core|work|personal]"
-read type
-./apps.rb $type
+./apps.sh
 
 # Remaining setup
 echo "Backing up Sublime Packages"
