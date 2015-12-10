@@ -11,17 +11,18 @@
     echo "Please type in your desired computer name followed by [ENTER]"
     read compname
 
-    # Set computer name (as done via System Preferences → Sharing)
-    sudo scutil --set ComputerName $compname
-    sudo scutil --set LocalHostName $compname
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $compname
+    if [ -n "$compname" ]; then
+      # Set computer name (as done via System Preferences → Sharing)
+      sudo scutil --set ComputerName $compname
+      sudo scutil --set LocalHostName $compname
+      sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $compname
+    fi
 
     # Disable the sound effects on boot
     sudo nvram SystemAudioVolume=" "
 
     # Menu bar: show remaining battery time (on pre-10.8); hide percentage
     defaults write com.apple.menuextra.battery ShowPercent -string "NO"
-    defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
     # General: Enable save documents to iCloud
     defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -56,6 +57,9 @@
 
     # General: enable "natural" (Lion-style) scrolling
     defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+    # General: Disable cursor magnification on shake (El Capitan+)
+    defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true
 
     # Increase sound quality for Bluetooth headphones/headsets
     defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -213,7 +217,7 @@
     defaults write com.apple.dock largesize -float 80
 
     # Dock: minimize windows into their application's icon
-    defaults write com.apple.dock minimize-to-application -bool true
+    defaults write com.apple.dock minimize-to-application -bool false
 
     # Dock: enable spring loading for all Dock items
     defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
