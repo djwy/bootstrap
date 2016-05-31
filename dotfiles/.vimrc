@@ -1,19 +1,18 @@
 set nocompatible
 
 " bundles + plugin settings
-source ~/.vim/bundles.vim
+source ~/.vim/plug.vim
 source ~/.vim/neocomplete.config.vim
 let g:airline_theme = 'tomorrow' " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_symbols_branch = '⎇'
 " au VimEnter *  NERDTree " Automatically open NERDTREE
-nmap <C-\> :NERDTreeToggle<CR>
+map <C-\> <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
 " end bundles + plugin settings
 
 " Theming
 colorscheme Tomorrow-Night        " Would like to use peacocks-in-space
-set background=dark
+" set background=dark
 set term=xterm
 set t_Co=256
 syntax on                         " Syntax on by default
