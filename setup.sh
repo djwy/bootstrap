@@ -15,6 +15,13 @@ git clone https://github.com/powerline/fonts.git && \
   /bin/bash install.sh && \
   popd
 
+# Install theming options
+echo "Installing base16 kit"
+mkdir -p $HOME/.config
+git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+git clone https://github.com/chriskempson/base16-iterm2.git $HOME/.config/base16-iterm2
+echo "Follow directions here https://github.com/chriskempson/base16-vim"
+
 # Move over preferences
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*

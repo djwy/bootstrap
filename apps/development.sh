@@ -13,6 +13,8 @@ brew=(
   "wget"
   "watchman"
   "tree"
+  "the_silver_searcher"
+  "brew install macvim --with-cscope --with-lua"
   # Libraries
   "--with-libtiff --with-little-cms imagemagick"
   "ghostscript"
