@@ -8,6 +8,13 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 echo "Installing Homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# Install Powerline fonts
+echo "Installing Powerline fonts"
+git clone https://github.com/powerline/fonts.git && \
+  pushd fonts && \
+  /bin/bash install.sh && \
+  popd
+
 # Move over preferences
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*

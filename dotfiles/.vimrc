@@ -1,33 +1,90 @@
-" set the runtime path to include Vundle and initialize
 set nocompatible
+
+" bundles + plugin settings
+source ~/.vim/bundles.vim
+source ~/.vim/neocomplete.config.vim
+let g:airline_theme = 'tomorrow' " Airline
+let g:airline_powerline_fonts = 1
+let g:airline_symbols_branch = '⎇'
+" au VimEnter *  NERDTree " Automatically open NERDTREE
+nmap <C-\> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+" end bundles + plugin settings
+
+" Theming
+colorscheme Tomorrow-Night        " Would like to use peacocks-in-space
+set background=dark
+set term=xterm
 set t_Co=256
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+syntax on                         " Syntax on by default
+let &t_SI.="\e[5 q"               " have different cursor when in edit mode
+let &t_EI.="\e[1 q"
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+" Settings
+set clipboard=unnamed             " Clipboard support
+set title                         " Show the filename in the window titlebar.
+set timeoutlen=1000 ttimeoutlen=0 " Remove the delay when escaping from insert-mode
+set mouse=a                       " Enable mouse support
+set ttyfast
+set ttymouse=xterm2
+set number                        " number + relative number = line nr on active, relative for rest
+set relativenumber
+set laststatus=2
+set ruler
+set wildmenu
+set autoread
+set history=1000
+set tabpagemax=50
+set backspace=indent,eol,start
+set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+set ignorecase " Case insensitive matching
+set smartcase  " Unless we use a capital letter anywhere
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Indentation
+filetype plugin indent on
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 
-" Syntax on by default
-syntax on
+" Search highlighting
+set incsearch " Highlight while searching
+set hlsearch  " Highlight after entering search
 
-" Space peacocks color scheme
-"colorscheme peacocks-in-space
+" Window splitting behaviour
+set splitbelow
+set splitright
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
+
+set list listchars=trail:.,extends:>
+autocmd FileWritePre * :call TrimWhiteSpace()
+autocmd FileAppendPre * :call TrimWhiteSpace()
+autocmd FilterWritePre * :call TrimWhiteSpace()
+autocmd BufWritePre * :call TrimWhiteSpace()
+
+map <F2> :call TrimWhiteSpace()<CR>
+map! <F2> :call TrimWhiteSpace()<CR>
+
+" Keymaps
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+let mapleader = "\<Space>"
+map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+map <Leader>h :noh<CR>
+map <Leader>s :w<CR>
+map <Leader><Tab> gt
+map <Leader><S-Tab> gT
+
