@@ -4,7 +4,6 @@ set nocompatible
 "   Plugins
 " ----------------------------------------------------------------------------
 source ~/.vim/plug.vim
-source ~/.vim/neocomplete.config.vim
 
 " NERDTree
 " au VimEnter *  NERDTree " Automatically open NERDTREE
@@ -20,6 +19,12 @@ let g:ctrlp_prompt_mappings = {
 let g:syntastic_javascript_checkers = ['eslint']
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+
+" Neocomplete options
+let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
+let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
 
 " Airline
 let g:airline_theme = 'base16_default' " Airline
@@ -117,12 +122,13 @@ map <F2> :call TrimWhiteSpace()<CR>
 map! <F2> :call TrimWhiteSpace()<CR>
 map <C-\> <Plug>NERDTreeTabsToggle<CR>
 
-" Keymaps
+" Window mappings
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Leader mappings
 let mapleader = "\<Space>"
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
 map <Leader>h :noh<CR>
@@ -132,3 +138,20 @@ map <Leader>\ <Plug>NERDTreeTabsOpen<CR><c-w>p<Plug>NERDTreeTabsFind<CR>
 map <Leader><Tab> gt
 map <Leader><S-Tab> gT
 
+" Neocomplete mappings
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <silent> <expr> <CR> <SID>neocr()
+function! s:neocr()
+  return pumvisible() ? "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+endfunction
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
