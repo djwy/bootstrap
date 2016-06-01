@@ -53,9 +53,6 @@ git config --global core.excludesfile ~/.gitignore_global
 # Install a bunch of apps
 ./apps.rb
 
-# Remaining setup
-echo "Moving icons to desktop"
-mv -R icons ~/Desktop
-
+# Done!
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
