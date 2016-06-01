@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Prerequisite for all macs
+echo "Installing dev tools"
+xcode-select --install
+
+# Copying all files needed
+git clone --depth 1 https://github.com/berfarah/mac-setup $HOME/mac-setup && cd $HOME/mac-setup
+
 # Install Oh-My-Zsh
 echo "Installing Oh-My-Zsh"
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
