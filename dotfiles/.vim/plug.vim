@@ -28,10 +28,19 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'rstacruz/sparkup', { 'for': ['html', 'css'] }
+Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+
+" Ruby
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'rstacruz/sparkup', { 'for': ['html', 'css'] }
+Plug 'janko-m/vim-test', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'jgdavey/vim-blockle', { 'for': 'ruby' }
 
 " Syntastic: Code linting errors
 Plug 'scrooloose/syntastic', { 'for': ['ruby', 'go', 'javascript', 'css'] }
@@ -61,6 +70,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Make commenting easier
 Plug 'tpope/vim-commentary'
+
+" Sensible VIM!
+Plug 'tpope/vim-surround'
+
+" :e a/b/c/d.txt with mkdir -p
+Plug 'pbrisbin/vim-mkdir'
 
 
 " Other plugins require curl

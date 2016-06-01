@@ -15,11 +15,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
-" Syntastic settings
-let g:syntastic_javascript_checkers = ['eslint']
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-
 " Neocomplete options
 let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
 let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
@@ -28,7 +23,9 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax key
 
 " Airline
 let g:airline_theme = 'base16_default' " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
+let g:airline_powerline_fonts=0
 
 " ----------------------------------------------------------------------------
 "   Theming
@@ -51,8 +48,11 @@ set clipboard=unnamed                    " Clipboard support
 set title                                " Show the filename in the window titlebar.
 set timeoutlen=1000 ttimeoutlen=0        " Remove the delay when escaping from insert-mode
 set mouse=a                              " Enable mouse support
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+endif
 set ttyfast
-set ttymouse=xterm2
 set number                               " number + relative number = line nr on active, relative for rest
 set relativenumber
 set laststatus=2
@@ -65,6 +65,20 @@ set backspace=indent,eol,start
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set ignorecase                           " Case insensitive matching
 set smartcase                            " Unless we use a capital letter anywhere
+
+" Make it obvious where 80 characters is
+set textwidth=100
+set colorcolumn=+1
+
+" ----------------------------------------------------------------------------
+"   Undo / Backup / Swap file locations
+" ----------------------------------------------------------------------------
+set directory=$HOME/.vim/swap//
+set backupdir=$HOME/.vim/backup//
+if exists('+undodir')
+  set undodir=$HOME/.vim/undo
+  set undofile
+endif
 
 " ----------------------------------------------------------------------------
 "   Indentation
@@ -127,6 +141,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" Make Y consistent with D
+nnoremap Y y$
+
+" Reselect visual block after indent/outdent: http://vimbits.com/bits/20
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
 
 " Leader mappings
 let mapleader = "\<Space>"
