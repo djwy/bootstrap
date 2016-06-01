@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Installing git and other basic tools"
+xcode-select --install
+
 # Install Oh-My-Zsh
 echo "Installing Oh-My-Zsh"
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
@@ -27,6 +30,9 @@ echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
 cp -R dotfiles/ ~/
+
+# Setting up preferences
+git config --global core.excludesfile ~/.gitignore_global
 
 # Set a bunch of settings
 ./osx.sh
