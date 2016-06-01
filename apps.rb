@@ -33,6 +33,7 @@ installs.each do |install|
       puts "The following will have to be installed manually:"
       puts "================================================="
       puts install_list
+      next
     end
 
     install_list.each do |program|

@@ -1,6 +1,8 @@
 [user]
-  email = ber.farah@gmail.com
+  email = ber@bernardo.me
   name = Bernardo Farah
+[push]
+  default = simple
 [alias]
   aa = !git ls-files -d | xargs -r git rm && git ls-files -m -o --exclude-standard | xargs -r git add
   aup = "!sh -c 'git ls-files -m | grep $1 | xargs -r git add' -"
@@ -39,3 +41,6 @@
   added = green bold
   changed = yellow bold
   untracked = red
+[core]
+  excludesfile = /Users/bernardo/.gitignore_global
+

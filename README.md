@@ -1,4 +1,5 @@
-# mac-setup
+# Mac Setup
+
 Getting going on my mac quickly. You can literally copy paste the below into
 your terminal.
 
