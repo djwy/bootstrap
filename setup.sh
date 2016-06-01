@@ -26,23 +26,17 @@ echo "Follow directions here https://github.com/chriskempson/base16-vim"
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
-mkdir -p ~/.oh-my-zsh/custom/themes
-mv dotfiles/bernardo.zsh-theme ~/.oh-my-zsh/custom/themes
 cp -R dotfiles/ ~/
 
 # Set a bunch of settings
 ./osx.sh
 
-echo "Which apps do you want to install?\n[core|work|personal]"
-./apps.sh
+# Install a bunch of apps
+./apps.rb
 
 # Remaining setup
-echo "Backing up Sublime Packages"
-cp -R sublime/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 echo "Moving icons to desktop"
 mv -R icons ~/Desktop
-
-echo "Check for your sync settings in Dashlane to get Atom 100% back to before"
 
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

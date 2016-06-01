@@ -1,0 +1,57 @@
+brew:
+# Utils/Build tools
+- coreutils
+- pcre
+- autoconf
+- makedepend
+- apple-gcc42
+- automake
+- xz
+- wget
+- watchman
+- tree
+- the_silver_searcher
+- macvim --with-cscope --with-lua
+# Libraries
+- imagemagick --with-libtiff --with-little-cms
+- ghostscript
+- wget
+- jpeg
+- libpng
+- libtiff
+- webp
+# Languages
+- go
+- rust
+- python3
+- node
+- llvm
+- rbenv
+- ruby-build
+# Databases
+- postgresql
+- sqlite
+# Fun
+- exercism
+
+cask:
+# Dev tools
+- atom
+- sublime-text-3
+- iterm2
+- transmit
+# Browsers
+- firefox
+- google-chrome
+- google-chrome-canary
+- opera
+- dockertoolbox
+
+npm:
+- eslint
+- stylus
+- bower
+- ember-cli
+- grunt
+- mermaid
+
