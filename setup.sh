@@ -1,11 +1,18 @@
 #!/bin/bash
 
+git_tar()
+{
+  echo "Downloading $1 from github"
+  mkdir -p <|2|>
+  curl -sL "https://github.com/$1/archive/master.tar.gz" | tar -xz -C $2 --strip-components=1
+}
+
 # Prerequisite for all macs
 echo "Installing dev tools"
 xcode-select --install
 
 # Copying all files needed
-git clone --depth 1 https://github.com/berfarah/mac-setup $HOME/mac-setup && cd $HOME/mac-setup
+git_tar berfarah/mac-setup $HOME/mac-setup && cd $HOME/mac-setup
 
 # Install Oh-My-Zsh
 echo "Installing Oh-My-Zsh"
@@ -17,16 +24,18 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # Install Powerline fonts
 echo "Installing Powerline fonts"
-git clone https://github.com/powerline/fonts.git && \
-  pushd fonts && \
-  /bin/bash install.sh && \
-  popd
+git_tar powerline/fonts && \
+  pushd fonts &&           \
+  /bin/bash install.sh &&  \
+  popd &&
+  rm -rf fonts
 
 # Install theming options
 echo "Installing base16 kit"
 mkdir -p $HOME/.config
-git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
-git clone https://github.com/chriskempson/base16-iterm2.git $HOME/.config/base16-iterm2
+
+git_tar chriskempson/base16-shell $HOME/.config/base16-shell
+git_tar chriskempson/base16-iterm2 $HOME/.config/base16-iterm2
 echo "Follow directions here https://github.com/chriskempson/base16-vim"
 
 # Move over preferences
