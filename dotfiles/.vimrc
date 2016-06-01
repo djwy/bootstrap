@@ -16,6 +16,7 @@ let g:ctrlp_prompt_mappings = {
 " Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 " Theming
 set term=xterm
