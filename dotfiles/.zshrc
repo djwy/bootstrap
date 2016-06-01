@@ -9,6 +9,7 @@ source ~/.iterm2_shell_integration.zsh
 
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 alias resource='source ~/.zshrc'
+alias cdc='cd ~/Code'
 
 # VIM
 alias vi="mvim -v"
