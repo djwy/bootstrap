@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Installing git and other basic tools"
-xcode-select --install
-
 # Install Oh-My-Zsh
 echo "Installing Oh-My-Zsh"
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
