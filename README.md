@@ -1,8 +1,10 @@
 # mac-setup
-Getting going on my mac quickly
+Getting going on my mac quickly. You can literally copy paste the below into
+your terminal.
 
-First I need to: `xcode-select --install` to make sure I have git.
-Then `git clone https://github.com/berfarah/mac-setup.git` and run
-`cd mac-setup; ./setup.sh`
-
-That's it!
+```sh
+xcode-select --install
+git clone https://github.com/berfarah/mac-setup.git && \
+cd mac-setup && \
+./setup.sh
+```
