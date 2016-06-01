@@ -1,13 +1,16 @@
 set nocompatible
 
-" bundles + plugin settings
+" ----------------------------------------------------------------------------
+"   Plugins
+" ----------------------------------------------------------------------------
 source ~/.vim/plug.vim
 source ~/.vim/neocomplete.config.vim
-let g:airline_theme = 'base16_default' " Airline
-let g:airline_powerline_fonts = 1
+
+" NERDTree
 " au VimEnter *  NERDTree " Automatically open NERDTREE
 let NERDTreeShowHidden=1
-" end bundles + plugin settings
+
+" CtrlP map enter to new tab
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
@@ -18,27 +21,34 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
-" Theming
+" Airline
+let g:airline_theme = 'base16_default' " Airline
+let g:airline_powerline_fonts = 1
+
+" ----------------------------------------------------------------------------
+"   Theming
+" ----------------------------------------------------------------------------
 set term=xterm
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 set background=dark
-colorscheme base16-railscasts        " Would like to use peacocks-in-space
+colorscheme base16-railscasts            " Would like to use peacocks-in-space
 let base16colorspace=256
-
-syntax on                         " Syntax on by default
-let &t_SI.="\e[5 q"               " have different cursor when in edit mode
+syntax on                                " Syntax on by default
+let &t_SI.="\e[5 q"                      " have different cursor when in edit mode
 let &t_EI.="\e[1 q"
 
-" Settings
-set clipboard=unnamed             " Clipboard support
-set title                         " Show the filename in the window titlebar.
-set timeoutlen=1000 ttimeoutlen=0 " Remove the delay when escaping from insert-mode
-set mouse=a                       " Enable mouse support
+" ----------------------------------------------------------------------------
+"   Settings
+" ----------------------------------------------------------------------------
+set clipboard=unnamed                    " Clipboard support
+set title                                " Show the filename in the window titlebar.
+set timeoutlen=1000 ttimeoutlen=0        " Remove the delay when escaping from insert-mode
+set mouse=a                              " Enable mouse support
 set ttyfast
 set ttymouse=xterm2
-set number                        " number + relative number = line nr on active, relative for rest
+set number                               " number + relative number = line nr on active, relative for rest
 set relativenumber
 set laststatus=2
 set ruler
@@ -48,10 +58,12 @@ set history=1000
 set tabpagemax=50
 set backspace=indent,eol,start
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
-set ignorecase " Case insensitive matching
-set smartcase  " Unless we use a capital letter anywhere
+set ignorecase                           " Case insensitive matching
+set smartcase                            " Unless we use a capital letter anywhere
 
-" Indentation
+" ----------------------------------------------------------------------------
+"   Indentation
+" ----------------------------------------------------------------------------
 filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
@@ -77,7 +89,10 @@ function TrimWhiteSpace()
   ''
 endfunction
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" ----------------------------------------------------------------------------
+"   Use the silver searcher
+"   https://github.com/ggreer/the_silver_searcher
+" ----------------------------------------------------------------------------
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -89,6 +104,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" ----------------------------------------------------------------------------
+"   Key Bindings
+" ----------------------------------------------------------------------------
 set list listchars=trail:.,extends:>
 autocmd FileWritePre * :call TrimWhiteSpace()
 autocmd FileAppendPre * :call TrimWhiteSpace()
