@@ -61,6 +61,7 @@ endif
 set ttyfast
 set number                               " number + relative number = line nr on active, relative for rest
 set relativenumber
+set numberwidth=5
 set laststatus=2
 set ruler
 set wildmenu
