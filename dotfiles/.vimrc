@@ -44,6 +44,9 @@ endif
 let &t_SI.="\e[5 q"                      " have different cursor when in edit mode
 let &t_EI.="\e[1 q"
 
+highlight ColorColumn guibg=#40444e
+highlight Pmenu guibg=#40444e
+
 " ----------------------------------------------------------------------------
 "   Settings
 " ----------------------------------------------------------------------------
@@ -72,7 +75,6 @@ set smartcase                            " Unless we use a capital letter anywhe
 " Make it obvious where 80 characters is
 set textwidth=100
 set colorcolumn=+1
-highlight ColorColumn guibg=DarkGrey
 
 
 " ----------------------------------------------------------------------------
