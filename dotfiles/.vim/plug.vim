@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
 
 " Rename files from within vim
 Plug 'tpope/vim-eunuch'

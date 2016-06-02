@@ -19,18 +19,6 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 echo "Installing Homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Installing Powerline fonts"
-git_tar powerline/fonts && \
-  pushd fonts &&           \
-  /bin/bash install.sh &&  \
-  popd &&                  \
-  rm -rf fonts
-
-echo "Installing base16 kit"
-git_tar chriskempson/base16-shell $HOME/.config/base16-shell
-git_tar chriskempson/base16-iterm2 $HOME/.config/base16-iterm2
-echo "Follow directions here https://github.com/chriskempson/base16-vim"
-
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/

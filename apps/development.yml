@@ -11,7 +11,7 @@ brew:
 - watchman
 - tree
 - the_silver_searcher
-- macvim --with-cscope --with-lua
+- vim --with-cscope --with-lua
 # Libraries
 - imagemagick --with-libtiff --with-little-cms
 - ghostscript

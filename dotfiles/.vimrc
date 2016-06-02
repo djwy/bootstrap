@@ -32,12 +32,15 @@ let g:airline_powerline_fonts=0
 " ----------------------------------------------------------------------------
 set term=xterm
 set t_Co=256
-let &t_AB="\e[48;5;%dm"
-let &t_AF="\e[38;5;%dm"
-set background=dark
-colorscheme base16-railscasts            " Would like to use peacocks-in-space
-let base16colorspace=256
+
 syntax on                                " Syntax on by default
+
+if has('termguicolors') && !has('gui_running')
+  set termguicolors
+  set background=dark
+  colorscheme peacocks-in-space
+endif
+
 let &t_SI.="\e[5 q"                      " have different cursor when in edit mode
 let &t_EI.="\e[1 q"
 
@@ -69,6 +72,8 @@ set smartcase                            " Unless we use a capital letter anywhe
 " Make it obvious where 80 characters is
 set textwidth=100
 set colorcolumn=+1
+highlight ColorColumn guibg=DarkGrey
+
 
 " ----------------------------------------------------------------------------
 "   Undo / Backup / Swap file locations
