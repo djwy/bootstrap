@@ -11,10 +11,8 @@ type = gets.chomp
 
 # Installation list
 installs = %w(customization development)
-case type
-when "2" then installs << "work"
-when "3" then installs << "personal"
-end
+installs << "work"     if type == "2"
+installs << "personal" if type == "3"
 
 # Install lists
 commands = {
