@@ -22,7 +22,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
 
 " Airline
-let g:airline_theme = 'base16_default' " Airline
+let g:airline_theme = 'powerlineish' " Airline
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
 let g:airline_powerline_fonts=0
@@ -109,14 +109,17 @@ endif
 
 " Removes trailing spaces
 function TrimWhiteSpace()
-  %s/\s*$//
-  ''
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfunction
 
 " ----------------------------------------------------------------------------
 "   Use the silver searcher
 "   https://github.com/ggreer/the_silver_searcher
 " ----------------------------------------------------------------------------
+let g:ctrlp_show_hidden = 1
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -141,19 +144,22 @@ map <F2> :call TrimWhiteSpace()<CR>
 map! <F2> :call TrimWhiteSpace()<CR>
 map <C-\> <Plug>NERDTreeTabsToggle<CR>
 
-" Window mappings
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " Make Y consistent with D
 nnoremap Y y$
+
+" Nobody ever uses "Ex" mode, and it's annoying to leave
+noremap Q <nop>
 
 " Reselect visual block after indent/outdent: http://vimbits.com/bits/20
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
+
+" Repurpose arrow keys to navigating windows
+nnoremap <left> <C-w>h
+nnoremap <right> <C-w>l
+nnoremap <up> <C-w>k
+nnoremap <down> <C-w>j
 
 " Leader mappings
 let mapleader = "\<Space>"
