@@ -35,6 +35,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'alexbyk/vim-ultisnips-js-testing'
 
 " Ruby
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
@@ -53,14 +54,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'matchit.zip'
 
 " Better autocomplete
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-
-" Better autocomplete
 Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Sidebar + git status + persistence
 Plug 'scrooloose/nerdtree'
