@@ -20,7 +20,6 @@ let g:deoplete#sources#syntax#min_keyword_length = 3
 let g:deoplete#auto_complete_start_length = 1
 
 " Airline
-let g:airline_theme = 'powerlineish' " Airline
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
 let g:airline_powerline_fonts=0
@@ -33,7 +32,8 @@ syntax on                                " Syntax on by default
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme peacocks-in-space
+colorscheme base16-flat
+let g:airline_theme = 'base16_flat' " Airline
 
 let &t_SI.="\e[5 q"                      " have different cursor when in edit mode
 let &t_EI.="\e[1 q"
