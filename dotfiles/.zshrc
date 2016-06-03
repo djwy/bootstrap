@@ -13,9 +13,10 @@ alias cdc='cd ~/Code'
 alias gcane="git commit --amend --no-edit"
 
 # Vim
-export VISUAL="vim"
+export VISUAL="nvim"
 export EDITOR=$VISUAL
-alias vi="vim"
+alias vim="nvim"
+alias vi="nvim"
 
 # Node
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/share/npm/bin:$PATH"
