@@ -69,10 +69,10 @@ set colorcolumn=+1
 " ----------------------------------------------------------------------------
 "   Undo / Backup / Swap file locations
 " ----------------------------------------------------------------------------
-set directory=$HOME/.vim/swap//
-set backupdir=$HOME/.vim/backup//
+set directory=$HOME/.config/nvim/swap//
+set backupdir=$HOME/.config/nvim/backup//
 if exists('+undodir')
-  set undodir=$HOME/.vim/undo
+  set undodir=$HOME/.config/nvim/undo
   set undofile
 endif
 
