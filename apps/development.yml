@@ -12,6 +12,7 @@ brew:
 - tree
 - the_silver_searcher
 - vim --with-cscope --with-lua
+- neovim/neovim/neovim
 # Libraries
 - imagemagick --with-libtiff --with-little-cms
 - ghostscript
@@ -54,4 +55,7 @@ npm:
 - ember-cli
 - grunt
 - mermaid
+
+bash:
+- pip3 install neovim
 
