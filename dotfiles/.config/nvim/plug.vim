@@ -45,7 +45,8 @@ Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'jgdavey/vim-blockle', { 'for': 'ruby' }
 
 " Syntastic: Code linting errors
-Plug 'scrooloose/syntastic', { 'for': ['ruby', 'go', 'javascript', 'css'] }
+" Plug 'scrooloose/syntastic', { 'for': ['ruby', 'go', 'javascript', 'css'] }
+Plug 'neomake/neomake'
 
 " Fuzzy file opener
 Plug 'ctrlpvim/ctrlp.vim'

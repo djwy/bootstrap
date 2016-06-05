@@ -9,9 +9,13 @@ let NERDTreeShowHidden=1
 
 " CtrlP map enter to new tab
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+      \ 'AcceptSelection("e")': ['<c-t>'],
+      \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+      \ }
+
+" Neomake
+autocmd! BufEnter * Neomake
+autocmd! BufWritePost * Neomake
 
 " Deoplete options
 let g:deoplete#enable_at_startup = 1
@@ -179,11 +183,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:ulti_expand_or_jump_res = 0
 function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    return "\<CR>"
+  endif
 endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
