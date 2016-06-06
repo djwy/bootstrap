@@ -39,8 +39,7 @@ set background=dark
 colorscheme base16-flat
 let g:airline_theme = 'base16_flat' " Airline
 
-let &t_SI.="\e[5 q"                      " have different cursor when in edit mode
-let &t_EI.="\e[1 q"
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 highlight ColorColumn guibg=#40444e
 highlight Pmenu guibg=#40444e
