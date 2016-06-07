@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
+Plug 'jdkanani/vim-material-theme'
 
 " Rename files from within vim
 Plug 'tpope/vim-eunuch'
@@ -31,6 +31,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'rstacruz/sparkup', { 'for': ['html', 'css'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'darfink/vim-plist'
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }

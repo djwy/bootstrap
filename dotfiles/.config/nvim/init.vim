@@ -35,14 +35,10 @@ let g:airline_powerline_fonts=0
 syntax on                                " Syntax on by default
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-colorscheme base16-flat
-let g:airline_theme = 'base16_flat' " Airline
-
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-highlight ColorColumn guibg=#40444e
-highlight Pmenu guibg=#40444e
+set background=dark
+colorscheme material-theme
+let g:airline_theme = 'base16_flat' " Airline
 
 " ----------------------------------------------------------------------------
 "   Settings
@@ -170,10 +166,10 @@ map <Leader><S-Tab> gT
 cabbr %% <C-R>=expand('%:p:h')<CR>
 
 " Deoplete mappings
-inoremap <expr><C-g>     deoplete#mappings#undo_completion()
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-g> deoplete#mappings#undo_completion()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
 
 " UltiSnips mapping
 let g:UltiSnipsExpandTrigger="<nop>"
