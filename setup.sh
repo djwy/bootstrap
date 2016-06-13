@@ -24,11 +24,11 @@ chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
 cp -R dotfiles/ ~/
 
-# Set a bunch of settings
-./osx.sh
-
 # Install a bunch of apps
 ./apps.rb
+
+# Set a bunch of settings
+./osx.sh
 
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
