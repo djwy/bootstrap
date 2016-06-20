@@ -47,8 +47,7 @@ set clipboard=unnamed                    " Clipboard support
 set title                                " Show the filename in the window titlebar.
 set timeoutlen=1000 ttimeoutlen=0        " Remove the delay when escaping from insert-mode
 set mouse=a                              " Enable mouse support
-set number                               " number + relative number = line nr on active, relative for rest
-set relativenumber
+set number
 set numberwidth=5
 set laststatus=2
 set ruler
@@ -64,7 +63,7 @@ set smartcase                            " Unless we use a capital letter anywhe
 " Make it obvious where 80 characters is
 set textwidth=100
 set colorcolumn=+1
-
+set lazyredraw
 
 " ----------------------------------------------------------------------------
 "   Undo / Backup / Swap file locations

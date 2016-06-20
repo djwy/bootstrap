@@ -32,6 +32,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'rstacruz/sparkup', { 'for': ['html', 'css'] }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'darfink/vim-plist'
+Plug 'kchmck/vim-coffee-script'
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -44,6 +45,9 @@ Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'jgdavey/vim-blockle', { 'for': 'ruby' }
+
+" Alignment in VIM
+Plug 'junegunn/vim-easy-align'
 
 " Syntastic: Code linting errors
 " Plug 'scrooloose/syntastic', { 'for': ['ruby', 'go', 'javascript', 'css'] }
