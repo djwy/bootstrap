@@ -154,6 +154,8 @@ nnoremap <down> <C-w>j
 " Leader mappings
 let mapleader = "\<Space>"
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+map <Leader>cf :let @* = expand("%:p")<CR>
+map <Leader>cd :let @* = expand("%:p:h")<CR>
 map <Leader>h :noh<CR>
 map <Leader>s :w<CR>
 map <Leader>n <Plug>NERDTreeTabsToggle<CR>
