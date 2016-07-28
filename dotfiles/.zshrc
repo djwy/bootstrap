@@ -2,10 +2,9 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="bernardo"
 
-plugins=(git rails ruby osx brew zsh-syntax-highlighting sublime last-working-dir docker)
+plugins=(git rails ruby osx brew zsh-syntax-highlighting rake-fast vi-mode tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.iterm2_shell_integration.zsh
 
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 alias resource='source ~/.zshrc'
@@ -32,4 +31,3 @@ eval "$(rbenv init -)" 2> /dev/null
 # GO
 export GOPATH="$HOME/Code/golang"
 export PATH="$GOPATH/bin:$PATH:/usr/local/opt/go/libexec/bin"
-
