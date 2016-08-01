@@ -18,6 +18,10 @@ Plug 'vim-airline/vim-airline-themes'
 " Colorschemes
 Plug 'chriskempson/base16-vim'
 Plug 'jdkanani/vim-material-theme'
+Plug 'rakr/vim-one'
+
+" Testing
+Plug 'janko-m/vim-test'
 
 " Rename files from within vim
 Plug 'tpope/vim-eunuch'
@@ -53,8 +57,9 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'scrooloose/syntastic', { 'for': ['ruby', 'go', 'javascript', 'css'] }
 Plug 'neomake/neomake'
 
-" Fuzzy file opener
+" Searching
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
 " Line matching via %
 Plug 'matchit.zip'
