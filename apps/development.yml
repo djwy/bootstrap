@@ -13,6 +13,8 @@ brew:
 - the_silver_searcher
 - vim --with-cscope --with-lua
 - neovim/neovim/neovim
+- fzf
+- ranger
 # Libraries
 - imagemagick --with-libtiff --with-little-cms
 - ghostscript

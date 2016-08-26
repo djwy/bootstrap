@@ -29,21 +29,21 @@ prompt_geometry_git_dirty() {
     staged="$(git_staged_count $st)"
     modified="$(git_modified_count $st)"
     new="$(git_new_count $st)"
-    echo "$staged $modified $new:: $GIT_DIRTY"
+    echo "$staged$modified$new:: $GIT_DIRTY"
   fi
 }
 
 git_staged_count() {
   count="$(echo $1 | grep '^ \?A' | wc -l)"
   if test $count -ne 0; then
-    echo "$GIT_STAGED${count##*( )}%{$reset_color%}"
+    echo "$GIT_STAGED${count##*( )}%{$reset_color%} "
   fi
 }
 
 git_modified_count() {
   count="$(echo $1 | grep '^ \?M' | wc -l)"
   if test $count -ne 0; then
-    echo "$GIT_MODIFIED${count##*( )}%{$reset_color%}"
+    echo "$GIT_MODIFIED${count##*( )}%{$reset_color%} "
   fi
 }
 
@@ -64,14 +64,15 @@ prompt_geometry_git_remote_check() {
   local_commit=$(git rev-parse @ 2>&1)
   remote_commit=$(git rev-parse @{u} 2>&1)
   common_base=$(git merge-base @ @{u} 2>&1) # last common commit
+  commit_difference=$(git rev-list --count HEAD..origin)
 
   if [[ $local_commit == $remote_commit ]]; then
     echo ""
   else
     if [[ $common_base == $remote_commit ]]; then
-      echo "$GIT_UNPUSHED"
+      echo "$commit_difference $GIT_UNPUSHED"
     elif [[ $common_base == $local_commit ]]; then
-      echo "$GIT_UNPULLED"
+      echo "$commit_difference n$GIT_UNPULLED"
     else
       echo "$GIT_UNPUSHED $GIT_UNPULLED"
     fi
@@ -106,7 +107,7 @@ prompt_geometry_set_title() {
 
 prompt_geometry_render() {
   PROMPT="
- %(?.$PROMPT_SYMBOL.$EXIT_VALUE_SYMBOL) %{$fg[yellow]%}%3~%{$reset_color%} "
+%(?.$PROMPT_SYMBOL.$EXIT_VALUE_SYMBOL) %{$fg[yellow]%}%3~%{$reset_color%} "
 
   PROMPT2=" $RPROMPT_SYMBOL "
   RPROMPT="$(prompt_geometry_git_info)"

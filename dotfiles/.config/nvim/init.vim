@@ -1,3 +1,5 @@
+let mapleader = "\<Space>"
+
 " ============================================================================
 "   Plugins
 " ============================================================================
@@ -12,42 +14,52 @@ let NERDTreeShowHidden=1
 map <Leader>n <Plug>NERDTreeTabsToggle<CR>
 map <Leader>\ :NERDTreeTabsOpen<CR><c-w>l:NERDTreeTabsFind<CR>
 
-" CtrlP (fuzzy finder)
+" Git session management
 " ----------------------------------------------------------------------------
-" Default to opening in a new tab
-let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("e")': ['<c-t>'],
-      \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-      \ }
-let g:ctrlp_show_hidden = 1
+" options
+let sessionoptions = 'curdir,folds,help,tabpages,winsize'
+let g:gitsessions_dir = '/Users/bernardo/.config/nvim/sessions'
 
-" Ack (file contents search)
+" mappings
+nnoremap <leader>gss :GitSessionSave<cr>
+nnoremap <leader>gsl :GitSessionLoad<cr>
+nnoremap <leader>gsd :GitSessionDelete<cr>
+
+" FZF (fuzzy finder)
 " ----------------------------------------------------------------------------
-cnoreabbrev Ack Ack!
-nnoremap <Leader>f :Ack!<Space>
+" options
+let g:fzf_action =
+\ { 'enter': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
-" Silver Searcher for Ack/Ctrlp
-" https://github.com/ggreer/the_silver_searcher
-" ----------------------------------------------------------------------------
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Conditional'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-  " Use Ag over Ack
-  let g:ackprg = 'ag --vimgrep'
+" mappings
+nnoremap <C-p> :FZF<CR>
+nnoremap <C-f> :Ag<Space>
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" Search through vim maps
+nmap <Leader><Tab> <plug>(fzf-maps-n)
+xmap <Leader><Tab> <plug>(fzf-maps-x)
+omap <Leader><Tab> <plug>(fzf-maps-o)
 
 " Neomake (linter)
 " ----------------------------------------------------------------------------
 autocmd! BufEnter * Neomake
 autocmd! BufWritePost * Neomake
-
 
 " Deoplete (autocomplete)
 " ----------------------------------------------------------------------------
@@ -56,6 +68,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources#syntax#min_keyword_length = 3
 let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer', 'tag', 'file']
+let deoplete#tag#cache_limit_size = 5000000
 
 " mappings
 inoremap <expr><C-g> deoplete#mappings#undo_completion()
@@ -103,11 +118,19 @@ map <Leader>l :TestLast<CR>
 " ============================================================================
 syntax on                                " Syntax on by default
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
+
+if exists('termguicolors')
+  set termguicolors " this will eventually be added to neovim
+endif
+
 set background=dark
 colorscheme material-theme
 let g:airline_theme = 'base16_flat' " Airline
+set cursorline
 
 
 " ============================================================================
@@ -216,7 +239,6 @@ nnoremap <down> <C-w>j
 
 " Leader mappings
 " ----------------------------------------------------------------------------
-let mapleader = "\<Space>"
 
 " Paste using automatic indentation
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
@@ -229,10 +251,3 @@ map <Leader>cd :let @* = expand("%:p:h")<CR>
 
 " Remove highlight
 map <Leader>h :noh<CR>
-
-" Save
-map <Leader>s :w<CR>
-
-" Navigate tabs
-map <Leader><Tab> gt
-map <Leader><S-Tab> gT

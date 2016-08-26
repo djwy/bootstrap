@@ -15,10 +15,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Vim sessions based on git branch/repo
+Plug 'berfarah/gitsessions.vim'
+
 " Colorschemes
 Plug 'chriskempson/base16-vim'
 Plug 'jdkanani/vim-material-theme'
 Plug 'rakr/vim-one'
+Plug 'raphamorim/lucario'
 
 " Testing
 Plug 'janko-m/vim-test'
@@ -58,8 +62,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
 
 " Searching
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Line matching via %
 Plug 'matchit.zip'
