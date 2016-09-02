@@ -11,7 +11,7 @@ echo "Installing dev tools"
 xcode-select --install
 
 echo "Gathering dependencies"
-git_tar berfarah/mac-setup $HOME/mac-setup && cd $HOME/mac-setup
+git_tar berfarah/bootstrap $HOME/bootstrap && cd $HOME/bootstrap
 
 echo "Installing Oh-My-Zsh"
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
