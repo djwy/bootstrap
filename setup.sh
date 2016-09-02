@@ -19,10 +19,15 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 echo "Installing Homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+mkdir $HOME/Code
+
+echo "Installing dotfiles"
+git clone git@github.com:berfarah/dotfiles $HOME/Code/dotfiles && \
+  $HOME/Code/dotfiles/link.sh
+
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
-cp -R dotfiles/ ~/
 
 # Install a bunch of apps
 ./apps.rb

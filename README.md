@@ -6,3 +6,5 @@ your terminal.
 ```sh
 curl -L https://raw.githubusercontent.com/berfarah/mac-setup/master/setup.sh | sh
 ```
+
+Depends on [my dotfiles](https://github.com/berfarah/dotfiles]
