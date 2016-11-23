@@ -19,17 +19,6 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 echo "Installing Homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-mkdir $HOME/Code
-
-echo "Installing dotfiles"
-git clone git@github.com:berfarah/dotfiles $HOME/Code/dotfiles && \
-  $HOME/Code/dotfiles/link.sh
-
-echo "Moving over old preferences"
-chmod 0600 ./Library/Preferences/*
-cp -R ./Library/ ~/Library/
-
-# Install a bunch of apps
 echo "Installing homebrew dependencies"
 brew bundle
 
@@ -39,6 +28,15 @@ if [ "$personal" == "y" ]; then
   echo "Installing additional applications"
   brew bundle --file Brewfile.personal
 fi
+
+echo "Installing dotfiles"
+mkdir -p $HOME/Code
+git clone git@github.com:berfarah/dotfiles $HOME/Code/dotfiles && \
+  $HOME/Code/dotfiles/link.sh
+
+echo "Moving over old preferences"
+chmod 0600 ./Library/Preferences/*
+cp -R ./Library/ ~/Library/
 
 # Set a bunch of settings
 ./osx.sh
