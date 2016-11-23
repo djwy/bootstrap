@@ -1,0 +1,18 @@
+# Media
+cask 'vlc'
+
+# Gaming
+cask 'desmume'
+cask 'dolphin'
+cask 'steam'
+cask 'teamspeak-client'
+
+# Time management
+cask 'flux'
+
+# Communication
+cask 'skype'
+
+system 'echo Guitar Pro http://www.guitar-pro.com/en/index.php?pg=download'
+mas 'Music Converter Pro', id: 468990782
+mas 'WSwitch', id: 1004094307

@@ -30,7 +30,15 @@ chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
 
 # Install a bunch of apps
-./apps.rb
+echo "Installing homebrew dependencies"
+brew bundle
+
+echo 'Is this a personal install? [y/n]'
+read personal
+if [ "$personal" == "y" ]; then
+  echo "Installing additional applications"
+  brew bundle --file Brewfile.personal
+fi
 
 # Set a bunch of settings
 ./osx.sh
