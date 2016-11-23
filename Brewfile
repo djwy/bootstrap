@@ -101,4 +101,5 @@ system 'gem install \
   bundler \
   pt \
   rubocop \
+  --conservative \
 '
