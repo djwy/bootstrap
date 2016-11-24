@@ -88,18 +88,3 @@ mas 'Fantastical', id: 975937182
 mas 'Magnet', id: 441258766
 mas 'The Archive Browser', id: 510232205
 mas 'The Unarchiver', id: 425424353
-
-# NPM
-# would be great if there was a package.json that would do global installs
-system 'npm install -g \
-  eslint \
-  yarn \
-'
-
-# Ruby
-system 'gem install \
-  bundler \
-  pt \
-  rubocop \
-  --conservative \
-'

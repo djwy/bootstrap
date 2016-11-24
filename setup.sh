@@ -1,5 +1,7 @@
 #!/bin/bash
 
+RUBY_VERSION="2.3.1"
+
 git_tar()
 {
   echo "Downloading $1 from github"
@@ -22,12 +24,19 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "Installing homebrew dependencies"
 brew bundle
 
-echo 'Is this a personal install? [y/n]'
-read personal
-if [ "$personal" == "y" ]; then
+if [ ! -z "$PERSONAL" ]; then
   echo "Installing additional applications"
   brew bundle --file=Brewfile.personal
 fi
+
+echo "Setting up NPM"
+npm install -g eslint yarn
+
+echo "Setting up Ruby"
+eval "$(rbenv init -)" 2> /dev/null
+rbenv install $RUBY_VERSION
+rbenv global $RUBY_VERSION
+gem install --conservative bundler pt rubocop
 
 echo "Installing dotfiles"
 mkdir -p $HOME/Code
