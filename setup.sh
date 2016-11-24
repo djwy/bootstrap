@@ -50,7 +50,7 @@ chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
 
 # Set a bunch of settings
-./osx.sh
+./macos.sh
 
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

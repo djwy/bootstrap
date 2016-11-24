@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -21,6 +27,10 @@ fi
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+
 # Menu bar: show remaining battery time (on pre-10.8); hide percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 
@@ -33,9 +43,11 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # General: enable the "Are you sure you want to open this application?" dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-# sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+# Set Help Viewer windows to non-floating mode
+defaults write com.apple.helpviewer DevMode -bool true
 
 # Restart automatically if the computer freezes
 systemsetup -setrestartfreeze on
@@ -78,7 +90,8 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # General: automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool false
@@ -150,6 +163,9 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Finder: display full path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
@@ -162,8 +178,9 @@ defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 # Remove the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
-# General: create .DS_Store files on network volumes
+# General: create .DS_Store files on network volumes and usb drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Finder: automatically open a new window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
@@ -203,6 +220,13 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+    General -bool true \
+    OpenWith -bool true \
+    Privileges -bool true
+
 ############################################################################
 # Dock, Dashboard, and hot corners                                         #
 ############################################################################
@@ -228,7 +252,11 @@ defaults write com.apple.dock launchanim -bool true
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# General: enable Dashboard as an overlay
+# Don’t group windows by application in Mission Control
+# (i.e. use the old Exposé behavior instead)
+defaults write com.apple.dock expose-group-by-app -bool false
+
+# General: enable Dashboard as a space
 defaults write com.apple.dock dashboard-in-overlay -bool false
 
 # General: automatically rearrange Spaces based on most recent use
@@ -265,7 +293,7 @@ find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Desktop
-defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-corner -int 12
 defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Mission Control
 defaults write com.apple.dock wvous-bl-corner -int 0
