@@ -26,7 +26,7 @@ echo 'Is this a personal install? [y/n]'
 read personal
 if [ "$personal" == "y" ]; then
   echo "Installing additional applications"
-  brew bundle --file Brewfile.personal
+  brew bundle --file=Brewfile.personal
 fi
 
 echo "Installing dotfiles"
