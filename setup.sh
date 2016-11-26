@@ -45,9 +45,38 @@ mkdir -p $HOME/Code
 git clone git@github.com:berfarah/dotfiles $HOME/Code/dotfiles && \
   $HOME/Code/dotfiles/link.sh
 
+# =======================================
+# Settings
+# =======================================
 echo "Moving over old preferences"
 chmod 0600 ./Library/Preferences/*
 cp -R ./Library/ ~/Library/
+
+# Mac app store
+
+# Check for software updates daily instead of weekly
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Turn on app auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
+
+# Alfred (enable sync)
+killall Alfred &> /dev/null
+defaults write com.runningwithcrayons.Alfred-Preferences-3.plist syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
+
+# Dash (enable sync)
+killall Dash &> /dev/null
+defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs"
+defaults write com.kapeli.dashdoc.plist shouldSyncBookmarks -bool true
+defaults write com.kapeli.dashdoc.plist shouldSyncDocsets -bool true
+defaults write com.kapeli.dashdoc.plist shouldSyncGeneral -bool true
+defaults write com.kapeli.dashdoc.plist shouldSyncView -bool true
 
 # Set a bunch of settings
 ./macos.sh
