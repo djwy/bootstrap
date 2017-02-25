@@ -28,23 +28,30 @@ brew 'xz'
 
 # Dev tools
 brew 'ctags'
+brew 'docker'
+brew 'docker-machine'
 brew 'fzf'
+brew 'git-crypt'
 brew 'heroku'
 brew 'htop'
+brew 'httpie'
 brew 'hub'
 brew 'neovim/neovim/neovim'
 system 'pip3 install neovim'
-brew 'ranger'
+brew 'p7zip'
 brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'watchman'
+brew 'vimpager'
+brew 'yarn'
 
 # Libraries
 brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
 
 # Languages
 brew 'crystal-lang'
+brew 'elixir'
 brew 'go'
 brew 'llvm'
 brew 'node'
@@ -59,6 +66,10 @@ brew 'mysql', restart_service: true
 brew 'postgresql', restart_service: true
 brew 'redis', restart_service: true
 brew 'sqlite'
+
+# Other webdev tools
+brew 'elasticsearch'
+brew 'logstash'
 
 # Fun
 brew 'exercism'
@@ -82,6 +93,8 @@ cask 'paw'
 cask 'slack'
 cask 'spotify'
 cask 'transmit'
+cask 'virtualbox'
+cask 'vivaldi'
 
 mas 'DaisyDisk', id: 411643860
 mas 'Fantastical', id: 975937182
