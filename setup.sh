@@ -36,9 +36,10 @@ npm install -g eslint yarn
 
 echo "Setting up Ruby"
 eval "$(rbenv init -)" 2> /dev/null
+git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
 rbenv install $RUBY_VERSION
 rbenv global $RUBY_VERSION
-gem install --conservative bundler pt rubocop
+gem install --conservative gem-ctags bundler rubocop
 
 echo "Installing dotfiles"
 mkdir -p $HOME/Code
