@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RUBY_VERSION="2.3.1"
+NODE_VERSION="6.10.0"
 
 git_tar()
 {
@@ -40,6 +41,12 @@ git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
 rbenv install $RUBY_VERSION
 rbenv global $RUBY_VERSION
 gem install --conservative gem-ctags bundler rubocop
+
+echo "Setting up Node"
+eval "$(nodenv init -)" 2> /dev/null
+nodenv install $NODE_VERSION
+nodenv global $NODE_VERSION
+yarn install -g eslint
 
 echo "Installing dotfiles"
 mkdir -p $HOME/Code

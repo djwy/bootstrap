@@ -44,7 +44,6 @@ brew 'the_silver_searcher'
 brew 'tree'
 brew 'watchman'
 brew 'vimpager'
-brew 'yarn'
 
 # Libraries
 brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
@@ -54,12 +53,12 @@ brew 'crystal-lang'
 brew 'elixir'
 brew 'go'
 brew 'llvm'
-brew 'node'
-brew 'nvm'
+brew 'nodenv'
 brew 'python3'
 brew 'rbenv'
 brew 'ruby-build'
 brew 'rust'
+brew 'yarn'
 
 # Databases
 brew 'mysql', restart_service: true
