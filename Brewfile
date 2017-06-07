@@ -27,7 +27,8 @@ brew 'wget'
 brew 'xz'
 
 # Dev tools
-brew 'ctags'
+tap 'universal-ctags/universal-ctags'
+brew 'universal-ctags', args: ['HEAD']
 brew 'docker'
 brew 'docker-machine'
 brew 'fzf'
