@@ -32,6 +32,9 @@ if [ "$personal" == "y" ]; then
   brew bundle --file=Brewfile.personal
 fi
 
+echo "Installing FZF shell extensions"
+/usr/local/opt/fzf/install
+
 echo "Setting up NPM"
 npm install -g eslint yarn
 
