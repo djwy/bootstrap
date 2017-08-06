@@ -79,7 +79,7 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Alfred (enable sync)
 killall Alfred &> /dev/null
-defaults write com.runningwithcrayons.Alfred-Preferences-3.plist syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
+defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
 
 # Dash (enable sync)
 killall Dash &> /dev/null
