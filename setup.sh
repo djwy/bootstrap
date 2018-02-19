@@ -29,10 +29,6 @@ if [ "$personal" == "y" ]; then
   brew bundle --file=Brewfile.personal
 fi
 
-echo "Setting Zsh as default shell"
-zsh
-chsh -s /bin/zsh
-
 echo "Installing Prezto"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
@@ -97,3 +93,7 @@ defaults write com.kapeli.dashdoc.plist shouldSyncView -bool true
 
 echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+echo "Setting Zsh as default shell"
+zsh
+chsh -s /bin/zsh
