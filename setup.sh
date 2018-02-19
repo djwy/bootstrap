@@ -99,5 +99,4 @@ echo "Done installing, removing self"
 rm -rf $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 echo "Setting Zsh as default shell"
-zsh
 chsh -s /bin/zsh
