@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RUBY_VERSION="2.3.1"
-NODE_VERSION="6.10.0"
+RUBY_VERSION="2.5.0"
+NODE_VERSION="8.9.4"
 
 git_tar()
 {
@@ -14,15 +14,12 @@ echo "Installing dev tools"
 xcode-select --install
 
 echo "Gathering dependencies"
-git_tar berfarah/bootstrap $HOME/bootstrap && cd $HOME/bootstrap
-
-echo "Installing Oh-My-Zsh"
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+git_tar djwy/bootstrap $HOME/bootstrap && cd $HOME/bootstrap
 
 echo "Installing Homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Installing homebrew dependencies"
+echo "Installing Homebrew dependencies"
 brew bundle
 
 echo "Is this a personal machine?"
@@ -31,6 +28,13 @@ if [ "$personal" == "y" ]; then
   echo "Installing additional applications"
   brew bundle --file=Brewfile.personal
 fi
+
+echo "Setting Zsh as default shell"
+zsh
+chsh -s /bin/zsh
+
+echo "Installing Prezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 echo "Installing FZF shell extensions"
 /usr/local/opt/fzf/install
@@ -52,9 +56,8 @@ nodenv global $NODE_VERSION
 yarn install -g eslint
 
 echo "Installing dotfiles"
-mkdir -p $HOME/Code
-git clone git@github.com:berfarah/dotfiles $HOME/Code/dotfiles && \
-  $HOME/Code/dotfiles/link.sh
+git clone git@github.com:djwy/dotfiles $HOME/dev/dotfiles && \
+  $HOME/dev/dotfiles/link.sh
 
 # =======================================
 # Settings
@@ -83,7 +86,7 @@ defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder -string "~
 
 # Dash (enable sync)
 killall Dash &> /dev/null
-defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs"
+defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs/Dash"
 defaults write com.kapeli.dashdoc.plist shouldSyncBookmarks -bool true
 defaults write com.kapeli.dashdoc.plist shouldSyncDocsets -bool true
 defaults write com.kapeli.dashdoc.plist shouldSyncGeneral -bool true

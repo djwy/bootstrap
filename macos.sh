@@ -14,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                            #
 ############################################################################
 
-echo "Please type in your desired computer name followed by [ENTER]"
+echo "Please type in your desired computer name followed by [ENTER]."
 read compname
 
 if [ -n "$compname" ]; then
@@ -27,21 +27,24 @@ fi
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Dark mode
+defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string "Dark"
+
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
-# Menu bar: show remaining battery time (on pre-10.8); hide percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "NO"
+# Menu bar: show remaining battery time (on 10.13); show percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
-# General: Enable save documents to iCloud
+# General: enable save documents to iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # General: automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # General: enable the "Are you sure you want to open this application?" dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+# defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
@@ -63,15 +66,15 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 ############################################################################
 
 # Trackpad: enable tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# General: enable "natural" (Lion-style) scrolling
+# General: enable "normal" (old-school) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
-# General: Disable cursor magnification on shake (El Capitan+)
-defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true
+# General: disable cursor magnification on shake (El Capitan+)
+# defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -83,6 +86,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # General: enable scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
 # Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
@@ -103,11 +107,11 @@ defaults write com.apple.BezelServices kDimTime -int 300
 # with `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
+defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # General: enable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ############################################################################
 # Screen                                                                   #
@@ -117,8 +121,9 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to ~/Desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# Save screenshots to ~/screens
+mkdir "${HOME}/screens"
+defaults write com.apple.screencapture location -string "${HOME}/screens"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -127,7 +132,7 @@ defaults write com.apple.screencapture type -string "png"
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # General: enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ############################################################################
 # Finder                                                                   #
@@ -146,16 +151,16 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool false
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: show status bar
-defaults write com.apple.finder ShowStatusBar -bool false
+defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool false
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -235,7 +240,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write com.apple.dock tilesize -int 48
 
 # Dock: enable magnification
-defaults write com.apple.dock magnification -bool false
+defaults write com.apple.dock magnification -bool true
 
 # Set magnification icon size to 80 pixels
 defaults write com.apple.dock largesize -float 80
@@ -289,18 +294,18 @@ find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 # 10: Put display to sleep
 # 11: Launchpad
 # 12: Notification Center
-# Top left screen corner → Dashboard
-defaults write com.apple.dock wvous-tl-corner -int 0
-defaults write com.apple.dock wvous-tl-modifier -int 0
-# Top right screen corner → Desktop
-defaults write com.apple.dock wvous-tr-corner -int 12
-defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Mission Control
-defaults write com.apple.dock wvous-bl-corner -int 0
-defaults write com.apple.dock wvous-bl-modifier -int 0
-# Bottom right screen corner → Launchpad
-defaults write com.apple.dock wvous-br-corner -int 0
-defaults write com.apple.dock wvous-br-modifier -int 0
+# # Top left screen corner → Dashboard
+# defaults write com.apple.dock wvous-tl-corner -int 0
+# defaults write com.apple.dock wvous-tl-modifier -int 0
+# # Top right screen corner → Desktop
+# defaults write com.apple.dock wvous-tr-corner -int 12
+# defaults write com.apple.dock wvous-tr-modifier -int 0
+# # Bottom left screen corner → Mission Control
+# defaults write com.apple.dock wvous-bl-corner -int 0
+# defaults write com.apple.dock wvous-bl-modifier -int 0
+# # Bottom right screen corner → Launchpad
+# defaults write com.apple.dock wvous-br-corner -int 0
+# defaults write com.apple.dock wvous-br-modifier -int 0
 
 ############################################################################
 # Terminal & iTerm 2                                                       #
@@ -310,7 +315,7 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 defaults write com.apple.terminal StringEncodings -array 4
 
 # iTerm: enable prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+defaults write com.googlecode.iterm2 PromptOnQuit -bool true
 
 # iTerm: enable native scrolling (for use with MOUSE_REPORTING_NONE)
 # https://filippo.io/native-scrolling-and-iterm2/
@@ -321,6 +326,6 @@ defaults write com.googlecode.iterm2 AlternateMouseScroll -bool true
 ############################################################################
 
 for app in "Dock" "Finder" "SystemUIServer" "iCal"; do
-    killall "${app}" > /dev/null 2>&1
+  killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
