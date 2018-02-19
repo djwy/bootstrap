@@ -70,8 +70,8 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# General: enable "normal" (old-school) scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+# General: enable "natural" (bad) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # General: disable cursor magnification on shake (El Capitan+)
 # defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true
