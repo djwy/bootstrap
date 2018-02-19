@@ -29,8 +29,13 @@ if [ "$personal" == "y" ]; then
   brew bundle --file=Brewfile.personal
 fi
 
+echo "Installing Powerline fonts"
+git clone --depth=1 https://github.com/powerline/fonts.git $HOME/dev/fonts
+$HOME/dev/fonts/install.sh
+rm -rf $HOME/dev/fonts
+
 echo "Installing Prezto"
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git $HOME/.zprezto
 
 echo "Installing FZF shell extensions"
 /usr/local/opt/fzf/install
