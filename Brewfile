@@ -16,12 +16,12 @@ brew 'hub'
 brew 'neovim'
 brew 'ripgrep'
 brew 'tree'
-brew 'vimpager'
 brew 'zsh'
 
 # Libraries
 brew 'bcrypt'
 brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
+brew 'openssl'
 
 # Languages
 brew 'node-build'

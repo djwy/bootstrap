@@ -3,3 +3,6 @@ cask 'steam'
 
 # Media
 cask 'vlc'
+
+# Utilities
+cask 'mullvad'
