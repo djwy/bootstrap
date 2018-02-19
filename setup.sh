@@ -56,7 +56,7 @@ nodenv global $NODE_VERSION
 yarn install -g eslint
 
 echo "Installing dotfiles"
-git clone git@github.com:djwy/dotfiles $HOME/dev/dotfiles && \
+git clone https://github.com/djwy/dotfiles.git $HOME/dev/dotfiles && \
   $HOME/dev/dotfiles/link.sh
 
 # =======================================
