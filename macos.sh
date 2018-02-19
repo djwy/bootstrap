@@ -28,7 +28,7 @@ fi
 sudo nvram SystemAudioVolume=" "
 
 # Dark mode
-defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string "Dark"
+sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string "Dark"
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
@@ -132,7 +132,7 @@ defaults write com.apple.screencapture type -string "png"
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # General: enable HiDPI display modes (requires restart)
-defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ############################################################################
 # Finder                                                                   #
