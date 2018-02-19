@@ -1,64 +1,35 @@
 # =========================================================
-# Customization
-# =========================================================
-# Quicklook extensions
-cask 'betterzipql'
-cask 'qlcolorcode'
-cask 'qlimagesize'
-cask 'qlmarkdown'
-cask 'qlprettypatch'
-cask 'qlstephen'
-cask 'quicklook-csv'
-cask 'quicklook-json'
-cask 'webpquicklook'
-
-# =========================================================
 # Development
 # =========================================================
 
-# Utils/Build tools
-# Not sure how many of these I actually need
+# Utils/build tools
 brew 'autoconf'
 brew 'automake'
-brew 'coreutils'
-brew 'makedepend'
 brew 'pcre'
-brew 'wget'
+brew 'readline'
 brew 'xz'
 
 # Dev tools
-tap 'universal-ctags/universal-ctags'
-brew 'universal-ctags', args: ['HEAD']
-brew 'docker'
-brew 'docker-machine'
 brew 'fzf'
-brew 'git-crypt'
-brew 'heroku'
-brew 'htop'
-brew 'httpie'
+brew 'git'
 brew 'hub'
 brew 'neovim/neovim/neovim'
 system 'pip3 install neovim'
-brew 'p7zip'
 brew 'ripgrep'
-brew 'the_silver_searcher'
 brew 'tree'
-brew 'watchman'
 brew 'vimpager'
+brew 'zsh'
 
 # Libraries
+brew 'bcrypt'
 brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
 
 # Languages
-brew 'crystal-lang'
-brew 'elixir'
-brew 'go'
-brew 'llvm'
+brew 'node-build'
 brew 'nodenv'
 brew 'python3'
 brew 'rbenv'
 brew 'ruby-build'
-brew 'rust'
 brew 'yarn'
 
 # Databases
@@ -67,37 +38,19 @@ brew 'postgresql', restart_service: true
 brew 'redis', restart_service: true
 brew 'sqlite'
 
-# Other webdev tools
-brew 'elasticsearch'
-brew 'logstash'
-
 # Fun
-brew 'exercism'
+brew 'irssi'
 
 # =========================================================
 # Applications
 # =========================================================
+cask '1password'
 cask 'alfred'
-cask 'bartender'
-cask 'cloud'
 cask 'dash'
-cask 'dashlane'
-cask 'dockertoolbox'
 cask 'firefox'
-cask 'flux'
 cask 'google-chrome'
-cask 'google-drive'
 cask 'iterm2'
-cask 'keepingyouawake'
 cask 'paw'
 cask 'slack'
-cask 'spotify'
-cask 'transmit'
-cask 'virtualbox'
-cask 'vivaldi'
-
-mas 'DaisyDisk', id: 411643860
-mas 'Fantastical', id: 975937182
-mas 'Magnet', id: 441258766
-mas 'The Archive Browser', id: 510232205
-mas 'The Unarchiver', id: 425424353
+cask 'spectacle'
+cask 'sublime-text'
