@@ -41,7 +41,7 @@ echo "Installing FZF shell extensions"
 /usr/local/opt/fzf/install
 
 echo "Setting up NPM"
-npm install -g eslint yarn
+npm install -g yarn
 
 echo "Setting up Ruby"
 eval "$(rbenv init -)" 2> /dev/null
@@ -53,7 +53,7 @@ echo "Setting up Node"
 eval "$(nodenv init -)" 2> /dev/null
 nodenv install $NODE_VERSION
 nodenv global $NODE_VERSION
-yarn install -g eslint
+yarn global add eslint
 
 echo "Installing dotfiles"
 git clone https://github.com/djwy/dotfiles.git $HOME/dev/dotfiles && \
