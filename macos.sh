@@ -314,13 +314,6 @@ find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# iTerm: enable prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool true
-
-# iTerm: enable native scrolling (for use with MOUSE_REPORTING_NONE)
-# https://filippo.io/native-scrolling-and-iterm2/
-defaults write com.googlecode.iterm2 AlternateMouseScroll -bool true
-
 ############################################################################
 # Kill affected applications                                               #
 ############################################################################
