@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RUBY_VERSION="2.5.0"
-NODE_VERSION="8.9.4"
+RUBY_VERSION="3.0.1"
+NODE_VERSION="14.17.2"
 
 git_tar()
 {
@@ -29,31 +29,30 @@ if [ "$personal" == "y" ]; then
   brew bundle --file=Brewfile.personal
 fi
 
-echo "Installing Powerline fonts"
-git clone --depth=1 https://github.com/powerline/fonts.git $HOME/dev/fonts
-$HOME/dev/fonts/install.sh
-rm -rf $HOME/dev/fonts
-
-echo "Installing Prezto"
-git clone --recursive https://github.com/sorin-ionescu/prezto.git $HOME/.zprezto
+echo "Installing Nerd Font"
+brew tap homebrew/cask-fonts
+brew install font-fira-code-nerd-font
 
 echo "Installing FZF shell extensions"
 /usr/local/opt/fzf/install
 
-echo "Setting up NPM"
-npm install -g yarn
+echo "Adding plugins for asdf"
+asdf plugin-add nodejs
+asdf plugin-add ruby
+asdf plugin-add yarn
 
 echo "Setting up Ruby"
-eval "$(rbenv init -)" 2> /dev/null
-rbenv install $RUBY_VERSION
-rbenv global $RUBY_VERSION
-gem install --conservative bundler rubocop
+asdf install ruby $RUBY_VERSION
+asdf global ruby $RUBY_VERSION
+gem install --conservative bundler pry rubocop
 
 echo "Setting up Node"
-eval "$(nodenv init -)" 2> /dev/null
-nodenv install $NODE_VERSION
-nodenv global $NODE_VERSION
-yarn global add eslint
+asdf install nodejs $NODE_VERSION
+asdf global nodejs $NODE_VERSION
+
+echo "Setting up Yarn"
+asdf install yarn latest
+yarn global add eslint prettier
 
 echo "Installing dotfiles"
 git clone https://github.com/djwy/dotfiles.git $HOME/dev/dotfiles && \
@@ -62,11 +61,15 @@ git clone https://github.com/djwy/dotfiles.git $HOME/dev/dotfiles && \
 # =======================================
 # Settings
 # =======================================
-echo "Moving over old preferences"
-chmod 0600 ./Library/Preferences/*
-cp -R ./Library/ ~/Library/
+echo "Move over old preferences?"
+read -p "[y/n]" preferences
+if [ "$preferences" == "y" ]; then
+  echo "Moving over old preferences"
+  chmod 0600 ./Library/Preferences/*
+  cp -R ./Library/ ~/Library/
+fi
 
-# Mac app store
+# Mac App Store
 
 # Check for software updates daily instead of weekly
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
@@ -81,16 +84,25 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults write com.apple.commerce AutoUpdate -bool true
 
 # Alfred (enable sync)
-killall Alfred &> /dev/null
-defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
+echo "Sync Alfred?"
+read -p "[y/n]" syncAlfred
+if [ "$syncAlfred" == "y" ]; then
+  killall Alfred &> /dev/null
+  defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
+fi
 
 # Dash (enable sync)
 killall Dash &> /dev/null
-defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs/Dash"
-defaults write com.kapeli.dashdoc.plist shouldSyncBookmarks -bool true
-defaults write com.kapeli.dashdoc.plist shouldSyncDocsets -bool true
-defaults write com.kapeli.dashdoc.plist shouldSyncGeneral -bool true
-defaults write com.kapeli.dashdoc.plist shouldSyncView -bool true
+defaults write com.kapeli.dashdoc actuallyDarkWebView YES
+echo "Sync Alfred?"
+read -p "[y/n]" syncDash
+if [ "$syncDash" == "y" ]; then
+  defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs/Dash"
+  defaults write com.kapeli.dashdoc.plist shouldSyncBookmarks -bool true
+  defaults write com.kapeli.dashdoc.plist shouldSyncDocsets -bool true
+  defaults write com.kapeli.dashdoc.plist shouldSyncGeneral -bool true
+  defaults write com.kapeli.dashdoc.plist shouldSyncView -bool true
+fi
 
 # Set a bunch of settings
 ./macos.sh
