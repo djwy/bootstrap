@@ -1,8 +1,7 @@
-# Gaming
-cask 'steam'
-
-# Media
-cask 'vlc'
+# Libraries
+brew 'qmk'
+brew 'youtube-dl'
 
 # Utilities
 cask 'mullvad'
+cask 'qmk-toolbox'

@@ -2,17 +2,20 @@
 # Development
 # =========================================================
 
-# Utils/build tools
+# Utils/Build Tools
 brew 'autoconf'
 brew 'automake'
+brew 'gawk'
+brew 'gpg'
+brew 'openssl'
 brew 'pcre'
 brew 'readline'
 brew 'xz'
 
-# Dev tools
+# Dev Tools
+brew 'asdf'
 brew 'fzf'
 brew 'git'
-brew 'hub'
 brew 'neovim'
 brew 'ripgrep'
 brew 'tree'
@@ -21,23 +24,6 @@ brew 'zsh'
 # Libraries
 brew 'bcrypt'
 brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
-brew 'openssl'
-
-# Languages
-brew 'node-build'
-brew 'nodenv'
-brew 'rbenv'
-brew 'ruby-build'
-brew 'yarn'
-
-# Databases
-brew 'mysql', restart_service: true
-brew 'postgresql', restart_service: true
-brew 'redis', restart_service: true
-brew 'sqlite'
-
-# Fun
-brew 'irssi'
 
 # =========================================================
 # Applications
@@ -47,8 +33,8 @@ cask 'alfred'
 cask 'dash'
 cask 'firefox'
 cask 'google-chrome'
-cask 'iterm2'
+cask 'kitty'
 cask 'paw'
+cask 'rectangle'
 cask 'slack'
-cask 'spectacle'
 cask 'sublime-text'
