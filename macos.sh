@@ -2,7 +2,7 @@
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit'
 
 # Ask for the administrator password upfront
 sudo -v
@@ -28,14 +28,11 @@ fi
 sudo nvram SystemAudioVolume=" "
 
 # Dark mode
-sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string "Dark"
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
-
-# Menu bar: show remaining battery time (on 10.13); show percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # General: enable save documents to iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -97,11 +94,6 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
-# General: automatically illuminate built-in MacBook keyboard in low light
-defaults write com.apple.BezelServices kDim -bool false
-# Turn off keyboard illumination when computer is not used for 5 minutes
-defaults write com.apple.BezelServices kDimTime -int 300
-
 # Set language and text formats
 # Note: if you’re in the US, you may replace `EUR` with `USD`, `Centimeters`
 # with `Inches`, `en_GB` with `en_US`, and `true` with `false`.
@@ -127,12 +119,6 @@ defaults write com.apple.screencapture location -string "${HOME}/screens"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
-
-# Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
-
-# General: enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ############################################################################
 # Finder                                                                   #
@@ -161,9 +147,6 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
-
-# Finder: allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Finder: display full path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
@@ -260,9 +243,6 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
-
-# General: enable Dashboard as a space
-defaults write com.apple.dock dashboard-in-overlay -bool false
 
 # General: automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
