@@ -17,7 +17,7 @@ echo "Gathering dependencies"
 git_tar djwy/bootstrap $HOME/bootstrap && cd $HOME/bootstrap
 
 echo "Installing Homebrew"
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Installing Homebrew dependencies"
 brew bundle
@@ -30,11 +30,10 @@ if [ "$personal" == "y" ]; then
 fi
 
 echo "Installing Nerd Font"
-brew tap homebrew/cask-fonts
 brew install font-fira-code-nerd-font
 
 echo "Installing FZF shell extensions"
-/usr/local/opt/fzf/install
+"$(brew --prefix)/opt/fzf/install"
 
 echo "Setting up Ruby"
 mise use --global ruby@$RUBY_VERSION
