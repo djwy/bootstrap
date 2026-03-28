@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RUBY_VERSION="3.0.1"
-NODE_VERSION="14.17.2"
+RUBY_VERSION="3.3.6"
+NODE_VERSION="22.12.0"
 
 git_tar()
 {
