@@ -83,19 +83,6 @@ if [ "$syncAlfred" == "y" ]; then
   defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder -string "~/Library/Mobile Documents/com~apple~CloudDocs/Alfred"
 fi
 
-# Dash (enable sync)
-killall Dash &> /dev/null
-defaults write com.kapeli.dashdoc actuallyDarkWebView YES
-echo "Sync Alfred?"
-read -p "[y/n]" syncDash
-if [ "$syncDash" == "y" ]; then
-  defaults write com.kapeli.dashdoc.plist syncFolderPath -string "~/Library/Mobile Documents/com~apple~CloudDocs/Dash"
-  defaults write com.kapeli.dashdoc.plist shouldSyncBookmarks -bool true
-  defaults write com.kapeli.dashdoc.plist shouldSyncDocsets -bool true
-  defaults write com.kapeli.dashdoc.plist shouldSyncGeneral -bool true
-  defaults write com.kapeli.dashdoc.plist shouldSyncView -bool true
-fi
-
 # Set a bunch of settings
 ./macos.sh
 
