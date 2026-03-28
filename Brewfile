@@ -13,7 +13,7 @@ brew 'readline'
 brew 'xz'
 
 # Dev Tools
-brew 'asdf'
+brew 'mise'
 brew 'fzf'
 brew 'git'
 brew 'neovim'

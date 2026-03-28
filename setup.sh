@@ -36,22 +36,15 @@ brew install font-fira-code-nerd-font
 echo "Installing FZF shell extensions"
 /usr/local/opt/fzf/install
 
-echo "Adding plugins for asdf"
-asdf plugin-add nodejs
-asdf plugin-add ruby
-asdf plugin-add yarn
-
 echo "Setting up Ruby"
-asdf install ruby $RUBY_VERSION
-asdf global ruby $RUBY_VERSION
+mise use --global ruby@$RUBY_VERSION
 gem install --conservative bundler pry rubocop
 
 echo "Setting up Node"
-asdf install nodejs $NODE_VERSION
-asdf global nodejs $NODE_VERSION
+mise use --global node@$NODE_VERSION
 
 echo "Setting up Yarn"
-asdf install yarn latest
+mise use --global yarn@latest
 yarn global add eslint prettier
 
 echo "Installing dotfiles"
