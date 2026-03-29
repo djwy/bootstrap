@@ -19,6 +19,9 @@ git_tar djwy/bootstrap $HOME/bootstrap && cd $HOME/bootstrap
 echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+echo "Loading Homebrew"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 echo "Installing Homebrew dependencies"
 brew bundle
 
