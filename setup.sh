@@ -30,7 +30,7 @@ if [ "$personal" == "y" ]; then
 fi
 
 echo "Installing Nerd Font"
-brew install font-fira-code-nerd-font
+brew install font-atkynson-mono-nerd-font
 
 echo "Installing FZF shell extensions"
 "$(brew --prefix)/opt/fzf/install"
