@@ -4,6 +4,7 @@
 
 # Utils/Build Tools
 brew 'gpg'
+brew 'libyaml'
 brew 'openssl'
 brew 'readline'
 
