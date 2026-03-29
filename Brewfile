@@ -7,6 +7,8 @@ brew 'gpg'
 brew 'libyaml'
 brew 'openssl'
 brew 'readline'
+brew 'tree-sitter'
+brew 'tree-sitter-cli'
 
 # Dev Tools
 brew 'mise'
