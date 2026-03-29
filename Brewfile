@@ -14,6 +14,7 @@ brew 'fzf'
 brew 'git'
 brew 'neovim'
 brew 'ripgrep'
+brew 'starship'
 brew 'zsh'
 
 # Libraries
